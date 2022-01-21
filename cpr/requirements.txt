@@ -1,0 +1,8 @@
+Django==4.0.1
+djangorestframework==3.13.1
+spacy==3.2.1
+uvicorn
+gunicorn
+drf-yasg
+# pyyaml
+# uritemplate
