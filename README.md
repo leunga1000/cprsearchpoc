@@ -93,7 +93,8 @@ Policy objects: list for all, or supply an id to interact with a policy by id
 
 ### Search API
 
-Search using Jaccard Similarity. The size of the intersection of the size of the union of two documents.
+Search using Jaccard Similarity, the size of the intersection of the size of the union of two documents.
+
 <http://127.0.0.1:8000/policy/search?q=space separated search string>
 
 
