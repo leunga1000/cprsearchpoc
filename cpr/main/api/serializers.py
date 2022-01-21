@@ -1,6 +1,10 @@
+from logging import getLogger
 from main.models import Policy, Sector
 from rest_framework import serializers
 from main.utils import spacy_nlp
+
+log = getLogger(__name__)
+
 
 try:
     import spacy
@@ -50,7 +54,8 @@ class PolicySearchSerializer(PolicySerializer):
     def get_jaccard_similarity(self, instance):
         sts = self.context['search_terms_set']
         terms = instance.terms.split()
-        j_c = len(sts.intersection(terms)) / len((sts.union(terms)))
+        union_length = len((sts.union(terms)))
+        j_c = len(sts.intersection(terms)) / union_length if union_length else 0.0
         return j_c 
 
     class Meta:
@@ -62,15 +67,14 @@ class PolicySpacySearchSerializer(PolicySerializer):
     spacy_similarity = serializers.SerializerMethodField()
 
     def get_spacy_similarity(self, instance):
-        print('getting ss')
         if not spacy_nlp:
             return 0.0
         search_terms_nlp = self.context['search_terms_nlp']
-        # desc_nlp = spacy_nlp(instance.description_text)
-        terms_nlp = spacy_nlp(instance.terms)
-        # s_s = search_terms_nlp.similarity(desc_nlp)
-        s_s = search_terms_nlp.similarity(terms_nlp)
-        print(s_s)
+        desc_nlp = spacy_nlp(instance.description_text)
+        # terms_nlp = spacy_nlp(instance.terms)
+        s_s = search_terms_nlp.similarity(desc_nlp)
+        # s_s = search_terms_nlp.similarity(terms_nlp)
+        log.debug('ss: ' , s_s)
         return s_s
 
     class Meta:

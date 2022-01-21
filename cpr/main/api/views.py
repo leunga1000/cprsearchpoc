@@ -71,14 +71,13 @@ class PolicyViewSet(viewsets.ModelViewSet):
         """Show spacy results"""
         if not spacy_nlp:
             return Response('Spacy not installed on this platform')
-        print('1')
         search_terms_string = self.request.query_params.get('q', '')
         search_terms = self.get_search_terms(request)
         search_qs = self.get_search_queryset(search_terms)
 
         ordering = 'spacy_similarity'
-        context = {"search_terms_nlp": spacy_nlp(search_terms)}
-        print('2')
+        context = {"search_terms_nlp": spacy_nlp(search_terms_string)}
+        
         data = PolicySpacySearchSerializer(search_qs, many=True, context=context).data
         data = sorted(data, key=lambda k: (k[ordering], ), reverse=True)
         return Response(data)

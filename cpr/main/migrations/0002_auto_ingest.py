@@ -14,10 +14,13 @@ def get_sector(sector_model, sector):
 
 def insert_policy(policy_model, sector_model, l: str):
     _id, title, sectors, text = l
+    words_only_text = transform_text(text)
+    unique_words = ' '.join(sorted(set(words_only_text.split())))
     sectors = sectors.split(';')
     p = policy_model.objects.create(id=_id,
                           title=title,
-                          description_text=text)
+                          description_text=text,
+                          terms=unique_words)  # migrations don't call custom methods()
     sectors = [get_sector(sector_model, s) for s in sectors]
     p.sectors.set(sectors)
     p.save()

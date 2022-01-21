@@ -16,6 +16,7 @@ class Policy(models.Model):
         words_only_text = transform_text(self.description_text)
         unique_words = ' '.join(sorted(set(words_only_text.split())))
         self.terms = unique_words
+        raise Exception('here')
         super().save(*args, **kwargs)
 
 
