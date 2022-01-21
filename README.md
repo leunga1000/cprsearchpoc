@@ -1,6 +1,6 @@
 ## CPR Search App POC
 
-We've used django to speed up the REST part of the API as this means CRUD to some
+We've used django to speed up the REST part of the API as this includes CRUD to some
 
 We've used a SQLite db to implement the POC. Obviously a server would be more appropriate further down the road.
 
@@ -42,6 +42,8 @@ docker build -t cpr . && docker run -p 8000:8000 cpr
 docker build -t cpr . && docker run -p 8000:8000 -v $PWD/cpr:/usr/src/app cpr
 docker build -t cpr . && docker run -p 8000:8000 -v %cd%/cpr:/usr/src/app cpr
 ```
+The endpoints will be accessible after seeing the message "Watching for file changes with StatReloader" or similar.
+
 
 ## Endpoints
 ### API Docs
