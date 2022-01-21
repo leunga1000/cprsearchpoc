@@ -1,35 +1,38 @@
-## cpr search app poc
+## CPR Search App POC
 
-We've used django to speed up the REST part of the API as some will include crud operations as part of it.
-We've used a SQLite db to implement the POC.
+We've used django to speed up the REST part of the API as this means CRUD to some
+
+We've used a SQLite db to implement the POC. Obviously a server would be more appropriate further down the road.
 
 ## other things to explore with more time
-lemmatize (botswana's)
-Use FastAPI
-store documents as vectors
-use a database which supports vector search e.g.
-redis (new)
-elasticsearch (also ann)
-retrain a bert model or train a new model
-pagination on list and search results
-add some more tests
-improve reg exps for especially for numbers with punctuations.
-n-grams/sentences/docs as a whole?
-move to docker compose file to pull into db containers for local experiments
-run code formatter
-include title, sectors
+- lemmatize (botswana's)
+- Use FastAPI
+- store documents as vectors
+- use a database which supports vector search e.g.
+- redis (new)
+- elasticsearch (also ann)
+- retrain a bert model or train a new model
+- pagination on list and search results
+- add some more tests
+- improve reg exps for especially for numbers with punctuations.
+- n-grams/sentences/docs as a whole?
+- move to docker compose file to pull into db containers for local experiments
+- run code formatter
+- include title, sectors
 
 ## installation instructions
 
 on *nix: make a virtual environment, install pip requirements and 
 
+
 ```sh
+python -m spacy download en_core_web_md
 run.sh
 ```
 
 OR
 
-docker, if you prefer docker or you are running on windows and spacy doesn't install.
+Docker, if you prefer docker or you are running on windows and spacy doesn't install.
 
 In the directory with the Dockerfile:
 ```sh
