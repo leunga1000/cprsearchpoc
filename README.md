@@ -4,7 +4,7 @@ We've used django to speed up the REST part of the API as this means CRUD to som
 
 We've used a SQLite db to implement the POC. Obviously a server would be more appropriate further down the road.
 
-## other things to explore with more time
+## Other things to explore with more time
 - lemmatize (botswana's)
 - Use FastAPI
 - store documents as vectors
@@ -20,7 +20,7 @@ We've used a SQLite db to implement the POC. Obviously a server would be more ap
 - run code formatter
 - include title, sectors
 
-## installation instructions
+## Installation instructions
 
 on *nix: make a virtual environment, install pip requirements and 
 
