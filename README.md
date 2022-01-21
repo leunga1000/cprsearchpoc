@@ -95,11 +95,15 @@ Policy objects: list for all, or supply an id to interact with a policy by id
 
 Search using Jaccard Similarity, the size of the intersection of the size of the union of two documents.
 
-<http://127.0.0.1:8000/policy/search?q=space separated search string>
+The search string is space delimited.
+<http://127.0.0.1:8000/policy/search?q=space%20separated%20search%20string>
 
 
 ### Spacy Search API
-Search using Spacy's simliarity functionality, spacy_similarity score included.
+Search using Spacy's simliarity functionality, spacy_similarity score included in the results. 
+
+The search string is space delimited. Spacy takes phrases into account too.
+
 <http://127.0.0.1:8000/policy/spacy_search/?q=policy%20export>
 
 
